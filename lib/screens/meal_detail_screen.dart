@@ -63,23 +63,26 @@ class _MealDetailScreenState extends State<MealDetailScreen> {
                       color: Theme.of(context).accentColor,
                       child: Padding(
                         padding:
-                        EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                            EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                         child: Text(selectedMeal.ingredients[index]),
                       ),
                     );
                   }),
             ),
             buildSectionTitle(context, 'Steps'),
-            buildContainer(
-                ListView.builder(
-                    itemCount: selectedMeal.steps.length,
-                    itemBuilder: (ctx, index) => ListTile(
-                      leading: CircleAvatar(
-                        child: Text('# ${(index +1 )}'),
-                      ),
-                      title: Text(selectedMeal.steps[index]),
-                    ))
-            )
+            buildContainer(ListView.builder(
+                itemCount: selectedMeal.steps.length,
+                itemBuilder: (ctx, index) => Column(
+                      children: [
+                        ListTile(
+                          leading: CircleAvatar(
+                            child: Text('# ${(index + 1)}'),
+                          ),
+                          title: Text(selectedMeal.steps[index]),
+                        ),
+                        Divider(),
+                      ],
+                    )))
           ],
         ),
       ),
